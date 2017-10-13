@@ -141,8 +141,9 @@ RUN apk add --no-cache --virtual=build-dependencies \
       # Corba
       com/sun/corba/\*                            \
       com/sun/org/omg/\*                          \
-      javax/rmi/CORBA/\*                          \
-      org/omg/\*                                  \
+      # needed for JMX
+      #javax/rmi/CORBA/\*                          \
+      #org/omg/\*                                  \
       sun/corba/\*                                \
       # Accessibility
       javax/accessibility/\*                      \
