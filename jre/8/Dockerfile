@@ -36,7 +36,6 @@ RUN apk add --no-cache --virtual=build-dependencies \
       Welcome.html                                \
       lib/jvm.hprof.txt                           \
       lib/management/jmxremote.password.template  \
-      lib/management/management.properties        \
       lib/management/snmp.acl.template            \
       lib/security/README.txt                     \
       man                                         \
@@ -50,7 +49,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
       # Control panel tool
       bin/ControlPanel                            \
       bin/jcontrol                                \
-      # Corba
+      # CORBA
       bin/orbd                                    \
       bin/tnameserv                               \
       # Web Start /  Java Network Launch Protocol
@@ -115,6 +114,8 @@ RUN apk add --no-cache --virtual=build-dependencies \
       lib/jfxswt.jar                              \
       # Java Naming and Directory Interface (JNDI) implementation for Domain Name Service look-up
       lib/ext/dnsns.jar &&                        \
+    #
+    cp /dev/null lib/management/management.properties && \
     #
     zip -q -d lib/rt.jar \
       # Abstract Window Toolkit (AWT)
