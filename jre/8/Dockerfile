@@ -11,7 +11,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
       unzip           \
       wget            \
       zip &&          \
-    \
+    #
     # Install the JRE
     wget -nv -P /tmp --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
       "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
@@ -19,12 +19,12 @@ RUN apk add --no-cache --virtual=build-dependencies \
     tar -C "/usr/lib/jvm/java-${JAVA_VERSION}-oracle" --strip-components=1 -xzf "/tmp/jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     ln -s "java-${JAVA_VERSION}-oracle" "$JAVA_HOME" && \
     ln -s "$JAVA_HOME/bin/"* /usr/bin/ && \
-    \
+    #
     # Download Unlimited Strength Java Cryptography Extension policy
     wget -nv -P /tmp --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
         "http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION}/jce_policy-${JAVA_VERSION}.zip" && \
     unzip -jo -d "${JAVA_HOME}/lib/security" "/tmp/jce_policy-${JAVA_VERSION}.zip" && \
-    \
+    #
     # Slimdown the JRE
     cd "$JAVA_HOME" && \
     rm -rf \
@@ -115,7 +115,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
       lib/jfxswt.jar                              \
       # Java Naming and Directory Interface (JNDI) implementation for Domain Name Service look-up
       lib/ext/dnsns.jar &&                        \
-    \
+    #
     zip -q -d lib/rt.jar \
       # Abstract Window Toolkit (AWT)
       com/sun/awt/\*                              \
@@ -149,7 +149,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
       # Java Print Service
       javax/print/\*                              \
       sun/print/\* &&                             \
-    \
+    #
     zip -q -d lib/resources.jar \
       # Corba
       com/sun/corba/\*                            \
@@ -173,7 +173,7 @@ RUN apk add --no-cache --virtual=build-dependencies \
       META-INF/services/javax.sound.\*            \
       # Java 2d
       META-INF/services/sun.java2d.\* &&          \
-    \
+    #
     # Clean up.
     apk del build-dependencies && \
     rm /tmp/*
